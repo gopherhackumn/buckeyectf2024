@@ -1,4 +1,5 @@
 import os
+import sys
 
 # pip install pycryptodome
 from Crypto.Cipher import AES
@@ -29,6 +30,8 @@ def pad(data):
     padding_length = 16 - len(data) % 16
     return data + b"_" * padding_length
 
+blocks = []
+
 
 def hash(data: bytes):
     data = pad(data)
@@ -36,6 +39,7 @@ def hash(data: bytes):
 
     for i in range(0, len(data), 16):
         block = data[i : i + 16]
+        blocks.append(block)
         state = aes(block, state)
 
     return state
@@ -69,7 +73,7 @@ def main():
     if b"french fry" not in your_message:
         print("That is not a recipe for french fry!!")
     elif your_signiature != sign(your_message, secret):
-        print("That is not a valid signiature!!")
+        print("That is not a valid signiature!!", blocks)
     else:
         print("Thank you very much. Here is your flag:")
         print(flag)
