@@ -9,12 +9,13 @@ def render(msg: str):
     draw = ImageDraw.Draw(image)
     font = ImageFont.load("./ter-x32b.pil")  # Terminus 32px
     draw.text((0, 0), msg, font=font)
-    image.save("flag.bmp", format="BMP")
+    return image
 
 
 if __name__ == "__main__":
     # This not the length of the actual flag
-    flag = "bctf{__________________}"
-    assert len(flag) < 32
+    flag = "bctf{The_quick_brown_fox_jumps_over_the_lazy_dog}"
+    # assert len(flag) < 32
     assert set(flag).issubset(set(string.ascii_lowercase + string.ascii_uppercase + string.digits + "{_}"))
-    render(flag)
+    image = render(flag)
+    image.save("flag.bmp", format="BMP")

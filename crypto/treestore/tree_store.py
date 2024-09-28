@@ -26,7 +26,7 @@ def pairwise(xs):
 
 
 def get_hash(x: bytes) -> bytes:
-    print("getting hash of", x)
+    # print("getting hash of", x)
     return hashlib.sha256(x).digest()
 
 
@@ -36,6 +36,7 @@ class TreeStore:
 
     def add_file(self, file: bytes):
         added_chunks = 0
+        dup_chunks = 0
 
         hashes = []
         for chunk in get_chunks(file):
@@ -57,6 +58,8 @@ class TreeStore:
                 if hash not in self.table:
                     self.table[hash] = data
                     added_chunks += 1
+                else:
+                    dup_chunks += 1
                 new_hashes.append(hash)
 
             hashes = new_hashes
