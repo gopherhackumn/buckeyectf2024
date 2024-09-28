@@ -26,6 +26,7 @@ def pairwise(xs):
 
 
 def get_hash(x: bytes) -> bytes:
+    print("getting hash of", x)
     return hashlib.sha256(x).digest()
 
 
