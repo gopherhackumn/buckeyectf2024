@@ -14,8 +14,10 @@ def render(msg: str):
 
 if __name__ == "__main__":
     # This not the length of the actual flag
-    flag = "bctf{The_quick_brown_fox_jumps_over_the_lazy_dog}"
+    # flag = "bctf{The_quick_brown_fox_jumps_over_the_lazy_dog}"
+    flag = "bctf{" + "_" * (31 - len("bctf{}")) + "}"
     # assert len(flag) < 32
     assert set(flag).issubset(set(string.ascii_lowercase + string.ascii_uppercase + string.digits + "{_}"))
     image = render(flag)
-    image.save("flag.bmp", format="BMP")
+    # image.save("flag.bmp", format="BMP")
+    image.save("flag2.bmp", format="BMP")
